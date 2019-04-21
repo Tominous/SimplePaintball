@@ -154,8 +154,8 @@ public class Arena {
             s.setLine(2, ChatColor.RED + getArenaState().getFormattedName());
             s.setLine(3, String.valueOf(getPlayers().size()) + "/" + String.valueOf(getMaxPlayers()));
             s.update(true);
-//            i++;
-//            Bukkit.getConsoleSender().sendMessage("Updated sign number " + i + "for arena " + getTitle());
+            i++;
+            Bukkit.getConsoleSender().sendMessage("Updated sign number " + i + "for arena " + getTitle());
         }
     }
 
@@ -331,7 +331,7 @@ public class Arena {
     }
 
     public void updateScoreboard(){
-//        Bukkit.getConsoleSender().sendMessage("Updated scoreboard for arena...");
+        Bukkit.getConsoleSender().sendMessage("Updated scoreboard for arena...");
         int blueKills = getTotalTeamKills(getBlueTeam());
         int redKills = getTotalTeamKills(getRedTeam());
         Bukkit.getScheduler().runTaskAsynchronously(plugin, new Runnable() {
@@ -444,7 +444,7 @@ public class Arena {
         kickPlayers();
         blueTeam.getMembers().clear();
         redTeam.getMembers().clear();
-//        removeScoreboard();
+        removeScoreboard();
         setArenaState(ArenaState.WAITING_FOR_PLAYERS);
         updateSigns();
     }
@@ -456,7 +456,7 @@ public class Arena {
         kickPlayers();
         blueTeam.getMembers().clear();
         redTeam.getMembers().clear();
-//        removeScoreboard();
+        removeScoreboard();
         setArenaState(ArenaState.WAITING_FOR_PLAYERS);
         updateSigns();
     }
@@ -532,13 +532,13 @@ public class Arena {
         awardWinners(winningTeam);
     }
 
-//    private void removeScoreboard(){
-//        for(UUID id : getPlayers()){
-//            Player p = Bukkit.getPlayer(id);
-//            p.setScoreboard(Bukkit.getScoreboardManager().getNewScoreboard());
-//        }
-//        Bukkit.getConsoleSender().sendMessage("Removed scoreboards");
-//    }
+    private void removeScoreboard(){
+        for(UUID id : getPlayers()){
+            Player p = Bukkit.getPlayer(id);
+            p.setScoreboard(Bukkit.getScoreboardManager().getNewScoreboard());
+        }
+        Bukkit.getConsoleSender().sendMessage("Removed scoreboards");
+    }
     
     public void setGunKit(Player player, Gun gun) {
     	UUID id = player.getUniqueId();
@@ -771,7 +771,7 @@ public class Arena {
     }
 
     public void respawnPlayer(Player player) {
-//        UUID pUUID = player.getUniqueId();
+        UUID pUUID = player.getUniqueId();
         Team team = getPlayerTeam(player);
         Location spawnLoc = team.getRandomLocation();
         player.teleport(spawnLoc);

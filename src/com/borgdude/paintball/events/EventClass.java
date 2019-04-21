@@ -41,7 +41,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class EventClass implements Listener {
@@ -203,10 +203,10 @@ public class EventClass implements Listener {
         Player shooter;
         Player hit;
         
-//        if (event.getHitEntity() instanceof LivingEntity){
-//        	LivingEntity ent = (LivingEntity) event.getHitEntity();
-//        	ent.damage(100);
-//        }
+        if (event.getHitEntity() instanceof LivingEntity){
+        	LivingEntity ent = (LivingEntity) event.getHitEntity();
+        	ent.damage(100);
+        }
         
         if(event.getHitEntity() instanceof Player && event.getEntity().getShooter() instanceof Player){
             shooter = (Player) event.getEntity().getShooter();
